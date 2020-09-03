@@ -1,0 +1,93 @@
+.img-prod-car{
+    width: 30px;
+    border-radius: 15px;
+}
+.carprod{
+    text-align: center;
+}
+.nudcantidad{
+    text-align: center;
+    border-radius: 15px;
+}
+.txt-adicional{
+    text-align: center;
+     border-radius: 15px;
+     border: 1px dotted #7fff00;
+}
+.total{
+    margin-left: 80%;
+    margin-right: 0px;
+    display: inline-block;
+}
+.cbxs{
+    text-align: center; 
+}
+.btn-pagar{
+    max-width: 800px;
+}
+.imguser{
+    border-radius: 50%;
+}
+.logeado{
+    text-align: center;
+}
+.social-login{
+    text-align: center;
+    margin: 20px;
+}
+.t-iniciar{
+    text-align: center;
+}
+.google2{
+    border-radius: 50%;
+    margin: 10px;
+}
+.facebook3{
+    border-radius: 50%;
+    margin: 10px;
+}
+.limon{
+text-align: center;
+}
+.limonimg{
+    width: 150px;
+}
+.limonimg:hover{
+    cursor: pointer;
+}
+.ctnfechora{
+    text-align: center;
+}
+.fechora{
+    width: 200px;
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: darkgray;
+    text-align: center;
+}
+.impt{
+    text-align: center;
+}
+.t-mesa{
+    text-align: center;
+}
+.numeromesa{
+    background-color: white;
+    border-radius: 50%;
+    padding: 0px 6px;
+}
+.fechora:hover{
+    background-color: #222222;
+    cursor: pointer;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #2DE80C;
+    background-color: #2DE80C;
+  }
+.numero{
+    color: #222222;
+}

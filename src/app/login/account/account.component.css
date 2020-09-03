@@ -1,0 +1,39 @@
+.cuenta{
+    max-width: 900px;
+    margin-top: 150px;
+}
+
+.form-btn{
+    text-align: center;
+    display: inline-block;
+    width: 260px;
+}
+.cliente{   
+    border-radius: 15px;
+    padding: 12px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.form-cli{
+    display: inline-block;
+    width: 400px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: darkgray;
+    text-align: center;
+}
+.userSO{
+    text-align: center;
+}
+.botonesSuperiores{
+    margin: 5px;
+}
+.btn-div{
+    text-align: center;
+}
+.btn-account{
+    width: 800px;
+}

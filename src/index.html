@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Limoncito Peruano</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156467468-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156467468-1');
+</script>
+
+
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link href="/assets/animate/animate.css" rel="stylesheet">
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+  <!--===============================================================================================-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/fonts/themify/themify-icons.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/vendor/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/vendor/animsition/css/animsition.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/vendor/daterangepicker/daterangepicker.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/vendor/slick/slick.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/vendor/lightbox2/css/lightbox.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/assets/css/util.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <!--===============================================================================================-->
+</head>
+
+<body>
+  <app-root></app-root>
+
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml            : true,
+        version          : 'v6.0'
+      });
+    };
+
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/es_ES/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- Your customer chat code -->
+  <div class="fb-customerchat"
+    attribution=setup_tool
+    page_id="111195863774897"
+theme_color="#80ff00"
+logged_in_greeting="Hola! En que puedo ayudarte"
+logged_out_greeting="Hola! En que puedo ayudarte">
+  </div>
+
+  
+  <!--===============================================================================================-->
+  <script type="text/javascript" src="/assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script type="text/javascript" src="/assets/vendor/animsition/js/animsition.min.js"></script>
+  <!--===============================================================================================-->
+  <script type="text/javascript" src="/assets/vendor/bootstrap/js/popper.js"></script>
+  <script type="text/javascript" src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+  <script type="text/javascript" src="/assets/vendor/select2/select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script type="text/javascript" src="/assets/vendor/daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="/assets/vendor/daterangepicker/daterangepicker.js"></script>
+  <!--===============================================================================================-->
+  <script type="text/javascript" src="/assets/vendor/slick/slick.min.js"></script>
+  <script type="text/javascript" src="/assets/js/slick-custom.js"></script>
+  <!--===============================================================================================-->
+  <script type="text/javascript" src="/assets/vendor/parallax100/parallax100.js"></script>
+  <script type="text/javascript">
+    $('.parallax100').parallax100();
+  </script>
+  <!--===============================================================================================-->
+  <script type="text/javascript" src="/assets/vendor/countdowntime/countdowntime.js"></script>
+  <!--===============================================================================================-->
+  <script type="text/javascript" src="/assets/vendor/lightbox2/js/lightbox.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    function culqi() {
+      if (Culqi.token) {
+        var token = Culqi.token;
+        var payment_event = new CustomEvent('payment_event', { detail: token });
+        document.dispatchEvent(payment_event);
+      }
+    };
+  </script>
+</body>
+
+
+</html>

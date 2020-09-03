@@ -1,0 +1,387 @@
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="banner"
+                style="background-image: url(https://limonpimg.s3.us-east-2.amazonaws.com/img_web/plato03.jpg);"></div>
+            <div class="carousel-caption d-none d-md-block ">
+                <h5 class="animated rollIn">Nuestro Menu</h5>
+                <p class="animated bounceInRight">Traiga a cenar a su novia, su amante, su mujer y si las trae a las 3
+                    usted cenará gratis </p>
+                <a [routerLink]="[ '/nosotros']" class="animated bounceInUp">Nosotros</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="banner"
+                style="background-image: url(https://limonpimg.s3.us-east-2.amazonaws.com/img_web/plato02.jpg);"></div>
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="animated rollIn">Apto para todos</h5>
+                <p class="animated bounceInRight">Todos comemos, y sería una triste pérdida de oportunidad comer mal.
+                </p>
+                <a [routerLink]="[ '/nosotros']" class="animated bounceInUp">Nosotros</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="banner" style="background-image: url(/assets/img/plato01.jpg/);"></div>
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="animated rollIn">Deliciosos</h5>
+                <p class="animated bounceInRight">Después de una buena cena, uno puede perdonar a cualquiera, incluso
+                    las propias relaciones.</p>
+                <a [routerLink]="[ '/nosotros']" class="animated bounceInUp">Nosotros</a>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- Descripcion Del Menu -->
+<section class="bg2-pattern p-t-116 p-b-110 t-center p-l-15 p-r-15">
+    <h3 class="tit3 t-center m-b-35 m-t-5">
+        Un poco de nuestro menu
+    </h3>
+
+    <p class="t-center size32 m-l-r-auto">
+        El restaurant Marisquería “El Rincón de Oscar” se fundó el 31 de diciembre del 2003. Con más de 15 años de
+        servicio deleitando los paladares más exigentes del valle del Mantaro, “El Rincón de Oscar”, le ofrece una
+        excelente atención a sus comensales, ya que cuenta con un personal de primera, con un ambiente limpio y
+        adecuado, con terraza y al aire libre.El equipo que integra el restaurante está formado por profesionales tanto
+        en el área gastronómico como administrativa y operativa con la finalidad de mantener una alta calidad en todos
+        los sentidos. </p>
+</section>
+
+<!-- Ceviche -->
+<section class="section-lunch bgwhite">
+    <div class="header-lunch parallax0 parallax100" style="background-image: url(/assets/img/ceviche.jpg);">
+        <div class="bg1-overlay t-center p-t-170 p-b-165">
+            <h2 class="tit4 t-center">
+                Ceviches
+            </h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row p-t-108 p-b-70">
+            <ng-container *ngFor="let ceviche of productos">
+                <ng-template [ngIf]="ceviche.cat.idCategoria === 1">
+                    <div class="col-md-8 col-lg-6 m-l-r-auto">
+                        <!-- Block3 -->
+                        <div class="blo3 flex-w flex-col-l-sm m-b-30 manito">
+                            <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" data-placement="top"
+                                    title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(ceviche.idProducto)">
+                                    <img src="{{ceviche.imagen}}" alt="IMG-MENU"></a>
+                            </div>
+
+                            <div class="text-blo3 size21 flex-col-l-m" data-toggle="modal"
+                                data-target="#exampleModalCenter">
+                                <a class="txt21 m-b-3" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(ceviche.idProducto)">
+                                    {{ceviche.nombre}}
+                                </a>
+
+                                <span class="txt23" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(ceviche.idProducto)">
+                                    {{ceviche.descripcion}}
+                                </span>
+
+                                <span class="txt22 m-t-20" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(ceviche.idProducto)">
+                                    S/{{ceviche.precio}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </div>
+    </div>
+</section>
+
+<!-- Arroz -->
+<section class="section-lunch bgwhite">
+    <div class="header-lunch parallax0 parallax100" style="background-image: url(/assets/img/arroz.jpg);">
+        <div class="bg1-overlay t-center p-t-170 p-b-165">
+            <h2 class="tit4 t-center">
+                Arroces
+            </h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row p-t-108 p-b-70">
+            <ng-container *ngFor="let arroz of productos">
+                <ng-template [ngIf]="arroz.cat.idCategoria === 2">
+                    <div class="col-md-8 col-lg-6 m-l-r-auto">
+                        <!-- Block3 -->
+                        <div class="blo3 flex-w flex-col-l-sm m-b-30 manito">
+                            <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" data-placement="top"
+                                    title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(arroz.idProducto)"><img src="{{arroz.imagen}}"
+                                        alt="IMG-MENU"></a>
+                            </div>
+
+                            <div class="text-blo3 size21 flex-col-l-m">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" data-placement="top"
+                                    title="Doble Clic Para Ver Descripcion" (click)="obtenerDetalle(arroz.idProducto)"
+                                    class="txt21 m-b-3">
+                                    {{arroz.nombre}}
+                                </a>
+
+                                <span class="txt23" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(arroz.idProducto)">
+                                    {{arroz.descripcion}}
+                                </span>
+
+                                <span class="txt22 m-t-20" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(arroz.idProducto)">
+                                    S/{{arroz.precio}}
+                                </span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+
+        </div>
+    </div>
+</section>
+
+<!-- Criollo -->
+<section class="section-lunch bgwhite">
+    <div class="header-lunch parallax0 parallax100" style="background-image: url(/assets/img/criollo.jpg);">
+        <div class="bg1-overlay t-center p-t-170 p-b-165">
+            <h2 class="tit4 t-center">
+                Criollos
+            </h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row p-t-108 p-b-70">
+            <ng-container *ngFor="let criollo of productos">
+                <ng-template [ngIf]="criollo.cat.idCategoria === 3">
+                    <div class="col-md-8 col-lg-6 m-l-r-auto">
+                        <!-- Block3 -->
+                        <div class="blo3 flex-w flex-col-l-sm m-b-30 manito">
+                            <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" data-placement="top"
+                                    title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(criollo.idProducto)"><img src="{{criollo.imagen}}"
+                                        alt="IMG-MENU"></a>
+                            </div>
+
+                            <div class="text-blo3 size21 flex-col-l-m">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" data-placement="top"
+                                    title="Doble Clic Para Ver Descripcion" (click)="obtenerDetalle(criollo.idProducto)"
+                                    class="txt21 m-b-3">
+                                    {{criollo.nombre}}
+                                </a>
+
+                                <span class="txt23" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(criollo.idProducto)">
+                                    {{criollo.descripcion}}
+                                </span>
+
+                                <span class="txt22 m-t-20" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(criollo.idProducto)">
+                                    S/{{criollo.precio}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </div>
+    </div>
+</section>
+
+<!-- Combo -->
+<section class="section-lunch bgwhite">
+    <div class="header-lunch parallax0 parallax100" style="background-image: url(/assets/img/combo.jpg);">
+        <div class="bg1-overlay t-center p-t-170 p-b-165">
+            <h2 class="tit4 t-center">
+                Combos
+            </h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row p-t-108 p-b-70">
+            <ng-container *ngFor="let combo of productos">
+                <ng-template [ngIf]="combo.cat.idCategoria === 4">
+                    <div class="col-md-8 col-lg-6 m-l-r-auto">
+                        <!-- Block3 -->
+                        <div class="blo3 flex-w flex-col-l-sm m-b-30 manito">
+                            <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" data-placement="top"
+                                    title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(combo.idProducto)"><img src="{{combo.imagen}}"
+                                        alt="IMG-MENU"></a>
+                            </div>
+
+                            <div class="text-blo3 size21 flex-col-l-m">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" data-placement="top"
+                                    title="Doble Clic Para Ver Descripcion" (click)="obtenerDetalle(combo.idProducto)"
+                                    class="txt21 m-b-3">
+                                    {{combo.nombre}}
+                                </a>
+
+                                <span class="txt23" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(combo.idProducto)">
+                                    {{combo.descripcion}}
+                                </span>
+
+                                <span class="txt22 m-t-20" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(combo.idProducto)">
+                                    S/{{combo.precio}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </div>
+    </div>
+</section>
+
+
+<!-- Bebidas -->
+<section class="section-lunch bgwhite">
+    <div class="header-lunch parallax0 parallax100" style="background-image: url(/assets/img/bebida.jpg);">
+        <div class="bg1-overlay t-center p-t-170 p-b-165">
+            <h2 class="tit4 t-center">
+                Bebidas
+            </h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row p-t-108 p-b-70">
+            <ng-container *ngFor="let bebida of productos">
+                <ng-template [ngIf]="bebida.cat.idCategoria === 5">
+                    <div class="col-md-8 col-lg-6 m-l-r-auto">
+                        <!-- Block3 -->
+                        <div class="blo3 flex-w flex-col-l-sm m-b-30 manito">
+                            <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" data-placement="top"
+                                    title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(bebida.idProducto)"><img src="{{bebida.imagen}}"
+                                        alt="IMG-MENU"></a>
+                            </div>
+
+                            <div class="text-blo3 size21 flex-col-l-m">
+                                <a data-toggle="modal" data-target="#exampleModalCenter" data-placement="top"
+                                    title="Doble Clic Para Ver Descripcion" (click)="obtenerDetalle(bebida.idProducto)"
+                                    class="txt21 m-b-3">
+                                    {{bebida.nombre}}
+                                </a>
+
+                                <span class="txt23" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(bebida.idProducto)">
+                                    {{bebida.descripcion}}
+                                </span>
+
+                                <span class="txt22 m-t-20" data-toggle="modal" data-target="#exampleModalCenter"
+                                    data-placement="top" title="Doble Clic Para Ver Descripcion"
+                                    (click)="obtenerDetalle(bebida.idProducto)">
+                                    S/{{bebida.precio}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </div>
+    </div>
+</section>
+
+<!-- PopUp Detalle Producto -->
+<ng-container *ngIf="detalleproducto">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title txt21 m-b-3" id="exampleModalCenterTitle">Descripcion Del Plato</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="bo-rad-10 hov-img-zoom m-r-28 imgplato">
+                        <a><img src="{{detalleproducto.imagen}}" alt="IMG-MENU" class="imgplato01"></a>
+                    </div>
+
+                    <div class="text-blo3 size21 flex-col-l-m">
+                        <a class="txt21 m-b-3">
+                            {{detalleproducto.nombre}}
+                        </a>
+
+                        <span class="txt23">
+                            {{detalleproducto.descripcion}}
+                        </span>
+
+                        <span class="txt22 m-t-20 ">
+                            S/{{detalleproducto.precio}}
+                        </span>
+                        <div class="alert alert-warning alert-dismissible fade show alerta" role="alert">
+                            <strong>Hola!</strong> Este Producto Ya esta en el carrito, Ve A ella Para modificar la cantidad o eliminarlo.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                        <span class="txt25 m-t-20">
+                            Cantidad
+                        </span>
+                        <form [formGroup]="ordenForm">
+                            <input type="number" formControlName="cantidad" min="1" max="20"
+                                class="txt21 m-b-3 nudcantidad" name="quantity" id="nudcantidad" (change)="onchange()"
+                                required>
+                        </form>
+                        <span class="txt25 m-t-10">
+                            Pedido Especial
+                        </span>
+                        <form [formGroup]="ordenForm">
+                            <textarea formControlName="adicional" cols="54" rows="1" id="txtpedido"
+                                class="txt23 m-t-10 txtpedido"
+                                placeholder="Escriba Aqui si tiene algun pedido adicional"></textarea>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="limpiarNud()"><i
+                            class="fa fa-close"></i>
+                        Cancelar</button>
+                    <button type="button" class="btn btn-success" (click)="addProducto(detalleproducto)"
+                        [disabled]="!ordenForm.valid" data-dismiss="modal"><i class="fa fa-shopping-cart"></i>
+                        Añadir a la Orden </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

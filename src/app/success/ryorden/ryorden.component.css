@@ -1,0 +1,16 @@
+.todo{
+    text-align: center;
+    display: inline-block;
+    margin-top: 180px;
+    margin-bottom: 160px;
+    max-width: 900px;
+    margin-left: 200px;
+}
+.haber{
+    margin: 20px;
+    text-align: center;
+}
+
+.emoji{
+    width: 150px;
+}

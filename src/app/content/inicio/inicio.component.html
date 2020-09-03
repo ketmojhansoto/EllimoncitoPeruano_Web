@@ -1,0 +1,251 @@
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="banner" style="background-image: url(https://limonpimg.s3.us-east-2.amazonaws.com/img_web/plato01.jpg);"></div>
+      <div class="carousel-caption d-none d-md-block ">
+        <h5 class="animated rollIn">Bienvenido Al Limoncito Peruano</h5>
+        <p class="animated bounceInRight">La mejor red social es una mesa llena de buena comida y rodeada de personas que quieres. </p>
+        <a [routerLink]="[ '/nosotros']" class="animated bounceInUp">Nosotros</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="banner" style="background-image: url(https://limonpimg.s3.us-east-2.amazonaws.com/img_web/plato02.jpg);"></div>
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="animated rollIn">Limon P</h5>
+        <p class="animated bounceInRight">Aquí se come como en casa pero sin tener que lavar los platos. </p>
+        <a [routerLink]="[ '/nosotros']" class="animated bounceInUp">Nosotros</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="banner" style="background-image: url(https://limonpimg.s3.us-east-2.amazonaws.com/img_web/plato03.jpg);"></div>
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="animated rollIn">Siempre Contigo...</h5>
+        <p class="animated bounceInRight">Nuestro horario: Abrimos cuando llegamos, cerramos cuando nos vamos, y si vienes y no estamos, es que no coincidimos. </p>
+        <a [routerLink]="[ '/nosotros']" class="animated bounceInUp">Nosotros</a>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+<section id="portfolio">
+  <div class="container-fluid">
+    <div class="content-center">
+      <h2>Nosotros somos La Marisqueria <b>Limoncito Peruano</b></h2>
+      <p>...... “El Limoncito Peruano” es una empresa nueva que desde haberse creado de encuentra al
+        servicio de todos deleitando los paladares más exigentes del valle del Mantaro, “El Limoncito Peruano” ...</p>
+        <a [routerLink]="[ '/nosotros']" class="txt21">Leer Mas ...</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="content-title">
+    <h4>Nuestros Platos</h4>
+  </div>
+</div>
+<div class="container menu-container">
+  <ul class="nav content-list" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="ceviche-tab" data-toggle="tab" href="#ceviche" role="tab" aria-controls="ceviche"
+        aria-selected="true">Ceviches</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="arroz-tab" data-toggle="tab" href="#arroz" role="tab" aria-controls="arroz"
+        aria-selected="false">Arroces</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="criollo-tab" data-toggle="tab" href="#criollo" role="tab" aria-controls="criollo"
+        aria-selected="false">Criollos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="combos-tab" data-toggle="tab" href="#combos" role="tab" aria-controls="combos"
+        aria-selected="false">Combos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="bebidas-tab" data-toggle="tab" href="#bebidas" role="tab" aria-controls="bebidas"
+        aria-selected="false">Bebidas</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="ceviche" role="tabpanel" aria-labelledby="ceviche-tab">
+      <div *ngFor="let cev of productos">
+        <ng-template [ngIf]="cev.cat.idCategoria === 1">
+          <div class="container-fluid">
+            <section class="section-mainmenu p-t-10 p-b-1 ">
+              <div class="col-md-1 col-lg-10 p-r-1 p-r-1-lg m-l-r-auto">
+                <div class="wrap-item-mainmenu p-b-1">
+                  <!-- Item mainmenu -->
+                  <div class="item-mainmenu m-b-10">
+                    <div class="flex-w flex-b m-b-3">
+                      <a [routerLink]="[ '/menu']" class="name-item-mainmenu txt21">
+                        {{cev.nombre}}
+                      </a>
+                      <div class="line-item-mainmenu bg3-pattern"></div>
+                      <div class="price-item-mainmenu txt22">
+                        S/{{cev.precio}}
+                      </div>
+                    </div>
+                    <span class="info-item-mainmenu txt23">
+                      {{cev.descripcion}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="arroz" role="tabpanel" aria-labelledby="arroz-tab">
+      <div *ngFor="let arr of productos">
+        <ng-template [ngIf]="arr.cat.idCategoria === 2">
+          <div class="container-fluid">
+            <section class="section-mainmenu p-t-10 p-b-1">
+              <div class="col-md-1 col-lg-10 p-r-1 p-r-1-lg m-l-r-auto">
+                <div class="wrap-item-mainmenu p-b-1">
+                  <!-- Item mainmenu -->
+                  <div class="item-mainmenu m-b-10">
+                    <div class="flex-w flex-b m-b-3">
+                      <a [routerLink]="[ '/menu']" class="name-item-mainmenu txt21">
+                        {{arr.nombre}}
+                      </a>
+                      <div class="line-item-mainmenu bg3-pattern"></div>
+                      <div class="price-item-mainmenu txt22">
+                        S/{{arr.precio}}
+                      </div>
+                    </div>
+                    <span class="info-item-mainmenu txt23">
+                      {{arr.descripcion}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="criollo" role="tabpanel" aria-labelledby="criollo-tab">
+      <div *ngFor="let cri of productos">
+        <ng-template [ngIf]="cri.cat.idCategoria === 3">
+          <div class="container-fluid">
+            <section class="section-mainmenu p-t-10 p-b-1 ">
+              <div class="col-md-1 col-lg-10 p-r-1 p-r-1-lg m-l-r-auto">
+                <div class="wrap-item-mainmenu p-b-1">
+                  <!-- Item mainmenu -->
+                  <div class="item-mainmenu m-b-10">
+                    <div class="flex-w flex-b m-b-3">
+                      <a [routerLink]="[ '/menu']" class="name-item-mainmenu txt21">
+                        {{cri.nombre}}
+                      </a>
+                      <div class="line-item-mainmenu bg3-pattern"></div>
+                      <div class="price-item-mainmenu txt22">
+                        S/{{cri.precio}}
+                      </div>
+                    </div>
+                    <span class="info-item-mainmenu txt23">
+                      {{cri.descripcion}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="combos" role="tabpanel" aria-labelledby="combos-tab">
+      <div *ngFor="let com of productos">
+        <ng-template [ngIf]="com.cat.idCategoria === 4">
+          <div class="container-fluid">
+            <section class="section-mainmenu p-t-10 p-b-1 ">
+              <div class="col-md-1 col-lg-10 p-r-1 p-r-1-lg m-l-r-auto">
+                <div class="wrap-item-mainmenu p-b-1">
+                  <!-- Item mainmenu -->
+                  <div class="item-mainmenu m-b-10">
+                    <div class="flex-w flex-b m-b-3">
+                      <a [routerLink]="[ '/menu']" class="name-item-mainmenu txt21">
+                        {{com.nombre}}
+                      </a>
+                      <div class="line-item-mainmenu bg3-pattern"></div>
+                      <div class="price-item-mainmenu txt22">
+                        S/{{com.precio}}
+                      </div>
+                    </div>
+                    <span class="info-item-mainmenu txt23">
+                      {{com.descripcion}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="bebidas" role="tabpanel" aria-labelledby="bebidas-tab">
+      <div *ngFor="let beb of productos">
+        <ng-template [ngIf]="beb.cat.idCategoria === 5">
+          <div class="container-fluid">
+            <section class="section-mainmenu p-t-10 p-b-1">
+              <div class="col-md-1 col-lg-10 p-r-1 p-r-1-lg m-l-r-auto">
+                <div class="wrap-item-mainmenu p-b-1">
+                  <!-- Item mainmenu -->
+                  <div class="item-mainmenu m-b-10">
+                    <div class="flex-w flex-b m-b-3">
+                      <a [routerLink]="[ '/menu']" class="name-item-mainmenu txt21">
+                        {{beb.nombre}}
+                      </a>
+                      <div class="line-item-mainmenu bg3-pattern"></div>
+                      <div class="price-item-mainmenu txt22">
+                        S/{{beb.precio}}
+                      </div>
+                    </div>
+                    <span class="info-item-mainmenu txt23">
+                      {{beb.descripcion}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container boton-center">
+  <a [routerLink]="[ '/menu' ]" class="boton">Ver Menu</a>
+</div>
+
+
+<div class="row content-galeria">
+  <div *ngFor="let img of galeria" class="col-sm-5 col-md-6">
+    <div class="portfolio-container">
+      <div class="portfolio-details">
+        <a href="">
+          <h2>{{img.nombre}}</h2>
+        </a>
+        <a href="">
+          <p>{{img.descripcion}}</p>
+        </a>
+      </div>
+      <img src="{{img.img}}" class="img-fluid" alt="galeria1">
+    </div>
+  </div>
+</div>

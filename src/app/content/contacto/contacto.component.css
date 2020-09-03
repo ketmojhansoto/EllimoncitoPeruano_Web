@@ -1,0 +1,60 @@
+/* ------------------------------------ */
+/*--------------------BANNER------------*/
+/* ------------------------------------ */
+.banner{
+    -webkit-background-size:cover;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.carousel-caption{
+    padding-bottom: 250px;
+}
+.carousel-caption h5{
+    font-size: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.carousel-caption h5{
+    animation-delay: 1s;
+}
+.carousel-caption p{
+    animation-delay: 2s;
+}
+.carousel-caption a{
+    animation-delay: 3s;
+}
+.carousel-caption p{
+    color: chartreuse;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+}
+.carousel-caption a{
+    background-color: chartreuse;
+    padding: 15px 35px;
+    display: inline-block;
+    margin-top: 15px;
+    color:black;
+    border-radius: 25px;
+    text-transform: uppercase;
+}
+ h2 {
+     font-size: 40px;
+     padding: 20px;
+ }
+ #portfolio{
+     padding-top:90px ;
+ }
+ .content-center{
+     max-width: 800px;
+     margin: 0 auto 60px auto;
+     text-align: center;
+ }
+ .content-center p{
+     font-size: 18px;
+     color: #999999;
+     line-height: 1.8;
+     padding-bottom: 0;
+ }
+ /* ------------------------------------ */

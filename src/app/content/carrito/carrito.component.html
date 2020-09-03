@@ -1,0 +1,390 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<ng-template [ngIf]="listaCarrito.length !== 0">
+    <div class="container txt20 cbxs">
+        <span class="txt21">
+            Este Carrito de Compras es para una :
+        </span>
+        <br>
+        <br>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="reserva" name="reserva" class="custom-control-input" checked
+                (click)="checkReserva()">
+            <label class="custom-control-label" for="reserva">Reserva </label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="ordenonline" name="reserva" class="custom-control-input" (click)="checkOrden()">
+            <label class="custom-control-label" for="ordenonline">Orden Online</label>
+        </div>
+    </div>
+    <br>
+
+    <div class="container">
+        <table class="table table-hover txt25">
+            <thead>
+                <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">Imagen del Producto</th>
+                    <th scope="col">Nombre del Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Pedido Adicional</th>
+                    <th scope="col">Cantidad del Producto</th>
+                    <th scope="col">Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let carrito of listaCarrito; index as i;" class="txt23 carprod">
+                    <th scope="row">{{i +1}}</th>
+                    <td><img src="{{carrito.producto.imagen}}" alt="Img-Plato" class="img-prod-car"></td>
+                    <td>{{carrito.producto.nombre}}</td>
+                    <td>{{carrito.producto.precio}}</td>
+                    <td>
+                        <input type="text" class="txt-adicional" value="{{carrito.adicional}}">
+                    </td>
+                    <td>
+                        <input type="number" class="nudcantidad" value="{{carrito.cantidad}}">
+                    </td>
+                    <td> <button class="btn btn-danger" (click)="eliminarproductocarrito(i); listarCarrito()"><i
+                                class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                    <!-- <td> <button class="btn btn-success" (click)="editarCarrito(i , haber); listarCarrito()"><i
+                                class="fa fa-trash-o" aria-hidden="true"></i></button></td> -->
+                </tr>
+            </tbody>
+            <tfoot>
+                <td colspan="5"></td>
+                <td colspan="1" class="t-center txt22">Total</td>
+                <td>
+                    <p class="txt22">S/. {{totalCarrito}} </p>
+                </td>
+            </tfoot>
+        </table>
+    </div>
+
+
+
+    <div class="container-fluid btn-pagar" *ngIf="checkreserva">
+        <button class="btn btn-success btn-lg btn-block txt23" type="button" data-toggle="modal"
+            data-target="#loginreserva">Realizar Reserva Por S/.{{totalCarrito}}
+        </button>
+    </div>
+
+    <!-- Modal Login Reserva -->
+    <div class="modal fade" id="loginreserva" tabindex="-1" role="dialog" aria-labelledby="loginreservaLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <ng-container *ngIf="user">
+                    <ng-container *ngIf="usuarioIdCreado[0]">
+                        <div class="modal-header">
+                            <h5 class="modal-title txt20" id="modalreservaTitle">Complete Alguno De Sus Datos</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <button class="btn btn-warning txt23" type="button" data-dismiss="modal" [routerLink]="[ '/account']">Ir a Completar mis
+                                Datos</button>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="!usuarioIdCreado[0]">
+                        <ng-template [ngIf]="clienteAlmacenado">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="loginreservaLabel">Bienvenido estas de Vuelta</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="logeado">
+                                    <img src="{{user.photoUrl}}" class="imguser">
+                                    <br>
+                                    <br>
+                                    <h4>{{user.name}}</h4>
+                                    <p>{{user.email}}</p>
+                                    <br>
+                                    <a class="btn btn-secondary cerrar-sesion" (click)="signOut()">
+                                        <i class="fa fa-sign-out"></i>
+                                        Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#modalreserva" data-dismiss="modal">Soy
+                                    {{user.name}}</button>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngIf="!user">
+                    <div class="modal-header">
+                        <h5 class="modal-title txt20" id="modalreservaTitle">Necesitamos Tus Datos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="t-iniciar">
+                            <span class="login100-form-title txt19">
+                                Puedes iniciar sesion por estas plataformas
+                            </span>
+                        </div>
+                        <div class="social-login">
+                            <button class=" btn btn-danger google2" (click)="signInWithGoogle()">
+                                <i class="fa fa-google"></i>
+                            </button>
+                            <button class=" btn btn-primary facebook3" (click)="signInWithFB()">
+                                <i class="fa fa-facebook"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                            [routerLink]="[ '/sigin']">Crear una Cuenta</button>
+                    </div> -->
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Reserva -->
+    <div class="modal fade bd-example-modal-lg" id="modalreserva" tabindex="-1" role="dialog"
+        aria-labelledby="modalreservaTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalreservaTitle">Datos para la reserva</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="reservaForm">
+                        <div class="ctnfechora">
+                            <div class="form-group fechora txt23">
+                                <label for="fecha">Fecha</label>
+                                <input class="form-control impt" type="date" formControlName="fecha" [min]="fecha">
+                            </div>
+                            <div class="form-group fechora txt23">
+                                <label for="hora">Hora</label>
+                                <input class="form-control impt" type="time" formControlName="hora" min="09:00" max="16:00" step="1800">
+                            </div>
+                            <div class="form-group fechora txt23">
+                                <label for="cadmesa">Cantidad De Comensales</label>
+                                <input class="form-control impt" type="number" formControlName="cadmesa"
+                                    [(ngModel)]="cadmesa" (change)=filtrarmesas() onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" >
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    
+                    <div class="t-mesa txt19">
+                        <label>Mesas Recomendadas Para La Cantidad De Comensales</label>
+                    </div>
+
+                    <ng-container *ngFor="let mesaselec of mesaflt" >
+                        <ng-template [ngIf]="mesaSelecionanda === mesaselec.idMesa">
+                            <div class="t-mesa txt19">
+                                <label>Mesa Seleccionada </label> 
+                            </div>
+                            <div class="t-mesa">
+                                <label class="tit4 t-center numero">{{mesaselec.numerodemesa}}</label>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                    
+                    
+                    <hr>
+                    <ng-container *ngFor="let mesa of mesaflt">
+                        <div class="form-group fechora txt23" (click)="seleccionarMesa(mesa.idMesa)">
+                            <label class="numeromesa">{{mesa.numerodemesa}}</label>
+                            <label> Esta {{mesa.descripcion}}</label>
+                        </div>
+                    </ng-container>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" (click)="crearReserva()"
+                        data-dismiss="modal">Confirmar Reserva</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Boton Orden-->
+    <div class="container-fluid btn-pagar" *ngIf="checkorden">
+        <button class="btn btn-success btn-lg btn-block txt23" type="button" data-toggle="modal"
+            data-target="#loginorden">Realizar Orden Online Por S/.{{totalCarrito}}
+        </button>
+    </div>
+
+    <!-- Modal Login Orden Online -->
+    <div class="modal fade" id="loginorden" tabindex="-1" role="dialog" aria-labelledby="loginordenLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <ng-container *ngIf="user">
+                    <ng-container *ngIf="usuarioIdCreado[0]">
+                        <div class="modal-header">
+                            <h5 class="modal-title txt20" id="modalreservaTitle">Complete Alguno De Sus Datos</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <button class="btn btn-warning txt23" type="button" data-dismiss="modal" [routerLink]="[ '/account']">Ir a Completar mis
+                                Datos</button>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="!usuarioIdCreado[0]">
+                        <ng-template [ngIf]="clienteAlmacenado">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="loginreservaLabel">Bienvenido estas de Vuelta</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="logeado">
+                                    <img src="{{user.photoUrl}}" class="imguser">
+                                    <br>
+                                    <br>
+                                    <h4>{{user.name}}</h4>
+                                    <p>{{user.email}}</p>
+                                    <br>
+                                    <a class="btn btn-secondary cerrar-sesion" (click)="signOut()">
+                                        <i class="fa fa-sign-out"></i>
+                                        Cerrar Sesion
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#modalorden" data-dismiss="modal">Soy
+                                    {{user.name}}</button>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngIf="!user">
+                    <div class="modal-header">
+                        <h5 class="modal-title txt20" id="modalreservaTitle">Necesitamos Tus Datos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="t-iniciar">
+                            <span class="login100-form-title txt19">
+                                Puedes iniciar sesion por estas plataformas
+                            </span>
+                        </div>
+                        <div class="social-login">
+                            <button class=" btn btn-danger google2" (click)="signInWithGoogle()">
+                                <i class="fa fa-google"></i>
+                            </button>
+                            <button class=" btn btn-primary facebook3" (click)="signInWithFB()">
+                                <i class="fa fa-facebook"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                            [routerLink]="[ '/sigin']">Crear una Cuenta</button>
+                    </div> -->
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Orden Online -->
+    <div class="modal fade bd-example-modal-lg" id="modalorden" tabindex="-1" role="dialog"
+        aria-labelledby="modalordenTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalordenTitle">Datos para la Orden Online </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="ordenForm">
+                        <div class="alert alert-danger alert-dismissible fade show txt10" role="alert">
+                            <strong>Importante!</strong> Si la Dirección que coloque no se encuentra dentro del Distrito
+                            de
+                            <strong>Huancayo</strong> su pedido no llegara.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion" class="txt19">Dirección De Orden</label>
+                            <input class="form-control txt23" type="text" formControlName="direccion"
+                                placeholder="Direccion donde de enviara la orden" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Telefono De Contacto</label>
+                            <input class="form-control txt23" type="text" formControlName="telefono" minlength="9"
+                                maxlength="9" placeholder="999 999 999" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!ordenForm.valid" (click)="crearOrden()"
+                        data-dismiss="modal">Confirmar Orden Online</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template [ngIf]="listaCarrito.length == 0">
+    <div class="container txt20 cbxs">
+        <span class="txt21">
+            Bueno para realizar una Reserva / Orden Online se tiene que agregar alguno de nuestros productos al carrito.
+            Puede probar con ir al nuestro menu desde la barra de navegacion.
+            <br>
+            O darle click en el Limon.
+        </span>
+        <br>
+        <br>
+        <br>
+        <div class="limon">
+            <img src="https://limonpimg.s3.us-east-2.amazonaws.com/img_web/favicon.png" class="limonimg"
+                [routerLink]="[ '/menu']">
+        </div>
+    </div>
+</ng-template>
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
